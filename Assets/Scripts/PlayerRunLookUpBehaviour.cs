@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRunBehavior : StateMachineBehaviour
+public class PlayerRunLookUpBehaviour : StateMachineBehaviour
 {
     private float speed = 10f;
     private float direction = 0f;
@@ -11,7 +11,7 @@ public class PlayerRunBehavior : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("I'm now Run.");
+        Debug.Log("I'm now RunLookUp.");
         rb = animator.gameObject.GetComponent<Rigidbody2D>();
         sprite = animator.gameObject.GetComponent<SpriteRenderer>();
     }
@@ -19,18 +19,18 @@ public class PlayerRunBehavior : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-        if (Input.GetKeyDown(KeyCode.W))
+       
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            animator.SetBool("LookingUp", true);
-            return;
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
+            animator.SetBool("LookingUp", false);
             animator.SetBool("LookingDown", true);
             return;
         }
-
+        else if (Input.GetKeyUp(KeyCode.W))
+        {
+            animator.SetBool("LookingUp", false);
+            return;
+        }
 
         direction = Input.GetAxis("Horizontal");
         if (direction != 0)
@@ -42,7 +42,7 @@ public class PlayerRunBehavior : StateMachineBehaviour
         }
         else
         {
-            animator.SetBool("IsWalking", false);
+            animator.SetBool("LookingUp", false);
         }
     }
 
@@ -50,5 +50,17 @@ public class PlayerRunBehavior : StateMachineBehaviour
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
     //    
+    //}
+
+    // OnStateMove is called right after Animator.OnAnimatorMove()
+    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    // Implement code that processes and affects root motion
+    //}
+
+    // OnStateIK is called right after Animator.OnAnimatorIK()
+    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    // Implement code that sets up animation IK (inverse kinematics)
     //}
 }
