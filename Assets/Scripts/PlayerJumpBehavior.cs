@@ -2,27 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdleBehavior : StateMachineBehaviour
+public class PlayerJumpBehavior : StateMachineBehaviour
 {
     private PlayerController playerController;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("I'm now Idle.");
+        Debug.Log("I am now Jump.");
         playerController = animator.GetComponent<PlayerController>();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (playerController.JumpWasPressed())
+        if (playerController.IsGrounded()) 
         {
-            playerController.Jump();
-            animator.SetBool("IsJumping", true);
+            animator.SetBool("IsJumping", false);
         }
 
-        if (playerController.RunWasPressed())
+        playerController.Move();
+        if (playerController.GetDirection() != 0)
         {
-            animator.SetBool("IsWalking", true);
+            playerController.FlipSprite();
         }
+
     }
 }
