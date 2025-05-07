@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerRunLookDownBehaviour : StateMachineBehaviour
 {
     private PlayerController playerController;
+    private Vector3 shootingOrigin;
+    private Vector3 shootOriginOffset = new Vector3(1.2f, -0.2f, 0);
+    private Vector2 shootDirection = new Vector2(0.5f, -0.5f);
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -23,6 +26,12 @@ public class PlayerRunLookDownBehaviour : StateMachineBehaviour
         {
             animator.SetBool("LookingDown", false);
             return;
+        }
+
+        if (playerController.ShootWasPressed())
+        {
+            shootingOrigin = animator.transform.position;
+            playerController.Shoot(shootDirection, shootingOrigin, shootOriginOffset);
         }
 
         if (playerController.JumpWasPressed())

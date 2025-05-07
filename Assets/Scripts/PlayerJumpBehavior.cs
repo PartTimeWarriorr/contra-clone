@@ -5,18 +5,37 @@ using UnityEngine;
 public class PlayerJumpBehavior : StateMachineBehaviour
 {
     private PlayerController playerController;
+    private float passedTime = 0f;
+
+    private Vector3 shootingOrigin;
+    private Vector3 shootOriginOffset = new Vector3(1.2f, 0.2f, 0);
+    private Vector2 shootDirection = new Vector2(1,0);
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("I am now Jump.");
         playerController = animator.GetComponent<PlayerController>();
+        passedTime = 0f;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (playerController.IsGrounded()) 
+        passedTime += Time.deltaTime;
+        if (passedTime > 0.1f)
         {
-            animator.SetBool("IsJumping", false);
+            Collider2D hit = Physics2D.OverlapCircle(animator.transform.position + new Vector3(0, -0.9f, 0), 0.3f, LayerMask.GetMask("Ground"));
+            Debug.Log(hit);
+
+            if (hit != null && hit.CompareTag("Ground"))
+            {
+                animator.SetBool("IsJumping", false);
+            }
+        }
+
+        if (playerController.ShootWasPressed())
+        {
+            shootingOrigin = animator.transform.position;
+            playerController.Shoot(shootDirection, shootingOrigin, shootOriginOffset);
         }
 
         playerController.Move();
@@ -24,6 +43,5 @@ public class PlayerJumpBehavior : StateMachineBehaviour
         {
             playerController.FlipSprite();
         }
-
     }
 }

@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     private float jumpForce = 20f;
 
     private bool grounded = true;
+    private bool swimming = false;
+
+    private GameObject bullet = null;
+
 
     void Awake()
     {
@@ -29,17 +33,54 @@ public class PlayerController : MonoBehaviour
 
         rb = gameObject.GetComponent<Rigidbody2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
+
+        bullet = Resources.Load<GameObject>("Prefabs/Bullet");
     }
 
     public bool IsGrounded()
     {
-        // return rb.velocity.y == 0;
         return grounded;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    // void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (collision.collider.CompareTag("Ground"))
+    //     {
+    //         grounded = true; 
+    //     }
+    //     else if(collision.collider.CompareTag("Water"))
+    //     {
+    //         swimming = true;
+    //     }
+    // }
+
+    // ??
+    // private ScriptableObject weapon;
+    float bulletVelocity = 6f;
+
+    public void Shoot(Vector2 shootDirection, Vector3 playerPosition, Vector3 offset)
     {
-        grounded = true; 
+        int facingDirection = FacingDirection();
+
+        Vector2 shootVelocity = new Vector2(shootDirection.x * facingDirection, shootDirection.y) * bulletVelocity;
+        Vector3 startingPosition = new Vector3(playerPosition.x + facingDirection * offset.x, playerPosition.y + offset.y, playerPosition.z);
+
+        GameObject newBullet = Instantiate(bullet);
+        newBullet.GetComponent<BulletLogic>().SetParameters(shootVelocity, startingPosition);
+        newBullet.transform.SetPositionAndRotation(startingPosition + new Vector3(0,0,-2), Quaternion.identity);
+        newBullet.transform.parent = GameObject.Find("BulletHolder").transform;
+    }
+
+    public int FacingDirection()
+    {
+        if (sprite.flipX)
+        {
+            return -1;
+        }
+        else
+        {
+            return 1;
+        }
     }
 
     public void Jump()
@@ -94,6 +135,11 @@ public class PlayerController : MonoBehaviour
         return inputManager.FindAction("Jump").WasPressedThisFrame();
     }
 
+    public bool ShootWasPressed()
+    {
+        return inputManager.FindAction("Shoot").WasPressedThisFrame();
+    }
+
     private void OnEnable()
     {
         inputManager.Enable();
@@ -103,4 +149,10 @@ public class PlayerController : MonoBehaviour
     {
         inputManager.Disable();
     }
+
+    // private void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawSphere(transform.position + new Vector3(0,-0.9f,0), 0.3f);
+    // }
 }
