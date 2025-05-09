@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private InputManager inputManager;
     Rigidbody2D rb;
     SpriteRenderer sprite;
+    SpriteRenderer upperBodySprite;
 
     private float direction = 0f;
 
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
         rb = gameObject.GetComponent<Rigidbody2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
+        upperBodySprite = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
 
         bullet = Resources.Load<GameObject>("Prefabs/Bullet");
     }
@@ -103,6 +105,7 @@ public class PlayerController : MonoBehaviour
     {
         // If player is moving to the left, the sprite is flipped to face left
         sprite.flipX = direction < 0;
+        upperBodySprite.flipX = direction < 0;
     }
 
     public bool RunWasPressed()

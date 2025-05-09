@@ -21,6 +21,7 @@ public class PlayerProneBehavior : StateMachineBehaviour
         {
             shootingOrigin = animator.transform.position;
             playerController.Shoot(shootDirection, shootingOrigin, shootOriginOffset);
+            animator.SetTrigger("Shoot");
         }
 
         if (playerController.LookUpWasPressed())

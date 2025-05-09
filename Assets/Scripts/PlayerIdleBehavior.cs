@@ -21,6 +21,7 @@ public class PlayerIdleBehavior : StateMachineBehaviour
         {
             shootingOrigin = animator.transform.position;
             playerController.Shoot(shootDirection, shootingOrigin, shootOriginOffset);
+            animator.SetTrigger("RunShoot");
         }
 
         if (playerController.LookDownWasPressed())
