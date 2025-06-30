@@ -12,6 +12,7 @@ public abstract class WeaponBehavior : ScriptableObject
     public float bulletVelocity = 6f;
     public Sprite sprite;
     public FiringMode firingMode;
+    public float fireRate = 0.1f;
 
     public abstract void Shoot(PlayerController playerController, Vector2 shootDirection, Vector3 playerPosition, Vector3 offset);
 }

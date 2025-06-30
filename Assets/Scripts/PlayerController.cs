@@ -59,8 +59,10 @@ public class PlayerController : MonoBehaviour
     // ??
     [SerializeField]
     private WeaponBehavior currWeapon;
+    private float timeSinceLastShot;
     public void SetWeapon(WeaponBehavior newWeapon)
     {
+        timeSinceLastShot = 0f;
         currWeapon = newWeapon;
     }
 
@@ -79,12 +81,22 @@ public class PlayerController : MonoBehaviour
             return false;
         }
 
+        timeSinceLastShot += Time.deltaTime;
+
         switch (currWeapon.firingMode)
         {
             case FiringMode.SemiAutomatic:
                 return ShootWasPressed();
             case FiringMode.Automatic:
-                return ShootIsPressed();
+                if (ShootIsPressed() && timeSinceLastShot >= currWeapon.fireRate)
+                {
+                    timeSinceLastShot = 0f;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             default:
                 return false;
         }
@@ -162,7 +174,7 @@ public class PlayerController : MonoBehaviour
 
     public bool ShootIsPressed()
     {
-        return inputManager.FindAction("Shoot").WasPerformedThisFrame();
+        return inputManager.FindAction("Shoot").IsPressed();
     }
 
     private void OnEnable()
