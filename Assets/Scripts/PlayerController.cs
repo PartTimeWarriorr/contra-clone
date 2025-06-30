@@ -57,20 +57,37 @@ public class PlayerController : MonoBehaviour
     // }
 
     // ??
-    // private ScriptableObject weapon;
-    float bulletVelocity = 6f;
+    [SerializeField]
+    private WeaponBehavior currWeapon;
+    public void SetWeapon(WeaponBehavior newWeapon)
+    {
+        currWeapon = newWeapon;
+    }
 
     public void Shoot(Vector2 shootDirection, Vector3 playerPosition, Vector3 offset)
     {
-        int facingDirection = FacingDirection();
+        if (currWeapon != null)
+            currWeapon.Shoot(this, shootDirection, playerPosition, offset);
+        else
+            Debug.Log("No weapon equipped!");
+    }
 
-        Vector2 shootVelocity = new Vector2(shootDirection.x * facingDirection, shootDirection.y) * bulletVelocity;
-        Vector3 startingPosition = new Vector3(playerPosition.x + facingDirection * offset.x, playerPosition.y + offset.y, playerPosition.z);
+    public bool ShouldShoot()
+    {
+        if (currWeapon == null)
+        {
+            return false;
+        }
 
-        GameObject newBullet = Instantiate(bullet);
-        newBullet.GetComponent<BulletLogic>().SetParameters(shootVelocity, startingPosition);
-        newBullet.transform.SetPositionAndRotation(startingPosition + new Vector3(0,0,-2), Quaternion.identity);
-        newBullet.transform.parent = GameObject.Find("BulletHolder").transform;
+        switch (currWeapon.firingMode)
+        {
+            case FiringMode.SemiAutomatic:
+                return ShootWasPressed();
+            case FiringMode.Automatic:
+                return ShootIsPressed();
+            default:
+                return false;
+        }
     }
 
     public int FacingDirection()
@@ -141,6 +158,11 @@ public class PlayerController : MonoBehaviour
     public bool ShootWasPressed()
     {
         return inputManager.FindAction("Shoot").WasPressedThisFrame();
+    }
+
+    public bool ShootIsPressed()
+    {
+        return inputManager.FindAction("Shoot").WasPerformedThisFrame();
     }
 
     private void OnEnable()

@@ -28,7 +28,7 @@ public class PlayerRunBehavior : StateMachineBehaviour
             return;
         }
 
-        if (playerController.ShootWasPressed())
+        if (playerController.ShouldShoot())
         {
             shootingOrigin = animator.transform.position;
             playerController.Shoot(shootDirection, shootingOrigin, shootOriginOffset);

@@ -17,7 +17,7 @@ public class PlayerIdleLookUpBehavior : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (playerController.ShootWasPressed())
+        if (playerController.ShouldShoot())
         {
             shootingOrigin = animator.transform.position;
             playerController.Shoot(shootDirection, shootingOrigin, shootOriginOffset);

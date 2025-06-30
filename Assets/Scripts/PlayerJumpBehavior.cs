@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerJumpBehavior : StateMachineBehaviour
 {
     private PlayerController playerController;
-    private float passedTime = 0f;
+    private Rigidbody2D rb;
 
     private Vector3 shootingOrigin;
     private Vector3 shootOriginOffset = new Vector3(1.2f, 0.2f, 0);
@@ -15,13 +15,13 @@ public class PlayerJumpBehavior : StateMachineBehaviour
     {
         Debug.Log("I am now Jump.");
         playerController = animator.GetComponent<PlayerController>();
-        passedTime = 0f;
+        rb = animator.GetComponent<Rigidbody2D>(); 
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        passedTime += Time.deltaTime;
-        if (passedTime > 0.1f)
+        
+        if (rb.velocity.y < 0)
         {
             Collider2D hit = Physics2D.OverlapCircle(animator.transform.position + new Vector3(0, -0.9f, 0), 0.3f, LayerMask.GetMask("Ground"));
             Debug.Log(hit);
@@ -32,7 +32,7 @@ public class PlayerJumpBehavior : StateMachineBehaviour
             }
         }
 
-        if (playerController.ShootWasPressed())
+        if (playerController.ShouldShoot())
         {
             shootingOrigin = animator.transform.position;
             playerController.Shoot(shootDirection, shootingOrigin, shootOriginOffset);
