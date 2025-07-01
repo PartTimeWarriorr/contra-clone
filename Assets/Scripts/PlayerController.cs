@@ -44,19 +44,27 @@ public class PlayerController : MonoBehaviour
         return grounded;
     }
 
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     if (collision.collider.CompareTag("Ground"))
-    //     {
-    //         grounded = true; 
-    //     }
-    //     else if(collision.collider.CompareTag("Water"))
-    //     {
-    //         swimming = true;
-    //     }
-    // }
+    public bool IsSwimming()
+    {
+        return swimming;
+    }
 
-    // ??
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.CompareTag("Water"))
+        {
+            swimming = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.collider.CompareTag("Water"))
+        {
+            swimming = false;
+        }
+    }
+
     [SerializeField]
     private WeaponBehavior currWeapon;
     private float timeSinceLastShot;
@@ -175,6 +183,16 @@ public class PlayerController : MonoBehaviour
     public bool ShootIsPressed()
     {
         return inputManager.FindAction("Shoot").IsPressed();
+    }
+
+    public bool LookUpIsPressed()
+    {
+        return inputManager.FindAction("LookUp").IsPressed();
+    }
+
+    public bool RunIsPressed()
+    {
+        return inputManager.FindAction("Run").IsPressed();
     }
 
     private void OnEnable()

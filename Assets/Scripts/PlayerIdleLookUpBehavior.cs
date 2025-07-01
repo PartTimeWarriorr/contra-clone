@@ -28,5 +28,10 @@ public class PlayerIdleLookUpBehavior : StateMachineBehaviour
         {
             animator.SetBool("LookingUp", false);
         }
+
+        if (playerController.IsSwimming())
+        {
+            animator.SetBool("IsSwimming", true);
+        }
     }
 }

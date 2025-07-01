@@ -50,5 +50,10 @@ public class PlayerRunLookDownBehaviour : StateMachineBehaviour
         {
             animator.SetBool("LookingDown", false);
         }
+
+        if (playerController.IsSwimming())
+        {
+            animator.SetBool("IsSwimming", true);
+        }
     }
 }

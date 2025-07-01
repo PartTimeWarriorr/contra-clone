@@ -2,39 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJumpBehavior : StateMachineBehaviour
+public class PlayerIdleWaterBehavior : StateMachineBehaviour
 {
     private PlayerController playerController;
-    private Rigidbody2D rb;
-
     private Vector3 shootingOrigin;
     private Vector3 shootOriginOffset = new Vector3(1.2f, 0.2f, 0);
     private Vector2 shootDirection = new Vector2(1,0);
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("I am now Jump.");
         playerController = animator.GetComponent<PlayerController>();
-        rb = animator.GetComponent<Rigidbody2D>(); 
+        animator.SetBool("IsJumping", false);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log(rb.velocity.y); 
-        if (rb.velocity.y < 0)
-        {
-            Collider2D hit = Physics2D.OverlapCircle(animator.transform.position + new Vector3(0, -0.9f, 0), 0.3f, LayerMask.GetMask("Ground"));
-
-            if (hit != null && hit.CompareTag("Ground"))
-            {
-                animator.SetBool("IsJumping", false);
-            }
-        }
-
         if (playerController.ShouldShoot())
         {
             shootingOrigin = animator.transform.position;
             playerController.Shoot(shootDirection, shootingOrigin, shootOriginOffset);
+            animator.SetTrigger("Shoot");
+        }
+
+        if (playerController.LookUpWasPressed())
+        {
+            animator.SetBool("LookingUp", true);
+        }
+
+        if (playerController.LookUpWasReleased())
+        {
+            animator.SetBool("LookingUp", false);
+        }
+
+        if (playerController.RunIsPressed())
+        {
+            animator.SetBool("IsWalking", true);
+        }
+
+        if (playerController.JumpWasPressed())
+        {
+            playerController.Jump();
+            animator.SetBool("IsSwimming", false);
+            animator.SetBool("IsJumping", true);
         }
 
         playerController.Move();
@@ -42,10 +51,11 @@ public class PlayerJumpBehavior : StateMachineBehaviour
         {
             playerController.FlipSprite();
         }
-
-        if (playerController.IsSwimming() && rb.velocity.y <= 0)
+        else
         {
-            animator.SetBool("IsSwimming", true);
+            animator.SetBool("IsWalking", false);
+            return;
         }
+
     }
 }

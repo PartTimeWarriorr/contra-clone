@@ -44,5 +44,10 @@ public class PlayerIdleBehavior : StateMachineBehaviour
         {
             animator.SetBool("IsWalking", true);
         }
+
+        if (playerController.IsSwimming())
+        {
+            animator.SetBool("IsSwimming", true);
+        }
     }
 }

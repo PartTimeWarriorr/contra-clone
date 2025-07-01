@@ -50,5 +50,10 @@ public class PlayerRunLookUpBehaviour : StateMachineBehaviour
         {
             animator.SetBool("LookingUp", false);
         }
+
+        if (playerController.IsSwimming())
+        {
+            animator.SetBool("IsSwimming", true);
+        }
     }
 }
