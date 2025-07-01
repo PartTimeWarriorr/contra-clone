@@ -24,7 +24,6 @@ public class PlayerJumpBehavior : StateMachineBehaviour
         if (rb.velocity.y < 0)
         {
             Collider2D hit = Physics2D.OverlapCircle(animator.transform.position + new Vector3(0, -0.9f, 0), 0.3f, LayerMask.GetMask("Ground"));
-            Debug.Log(hit);
 
             if (hit != null && hit.CompareTag("Ground"))
             {

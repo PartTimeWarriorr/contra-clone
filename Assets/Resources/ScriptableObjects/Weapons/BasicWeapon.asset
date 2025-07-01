@@ -16,3 +16,4 @@ MonoBehaviour:
   bulletVelocity: 6
   sprite: {fileID: -107199684, guid: 6740cf93d3bac8249a9e86ee1ac919d3, type: 3}
   firingMode: 0
+  fireRate: 0.05
