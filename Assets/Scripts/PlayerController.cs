@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private GameObject bullet = null;
 
+    // TODO: Add aim function? (Return Vector2 to know where to shoot)
 
     void Awake()
     {
