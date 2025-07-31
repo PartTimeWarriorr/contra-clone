@@ -8,7 +8,8 @@ public class PlayerJumpBehavior : StateMachineBehaviour
     private Rigidbody2D rb;
 
     private Vector3 shootingOrigin;
-    private Vector3 shootOriginOffset = new Vector3(1.2f, 0.2f, 0);
+    // private Vector3 shootOriginOffset = new Vector3(1.2f, 0.2f, 0);
+    private Vector3 shootOriginOffset = new Vector3(0, 0, 0);
     private Vector2 shootDirection = new Vector2(1,0);  // TODO: PlayerController Aim() function: any shootDirection is valid while jumping.
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -20,6 +21,7 @@ public class PlayerJumpBehavior : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        shootDirection = playerController.Aim();
         Debug.Log(rb.velocity.y); 
         if (rb.velocity.y < 0)
         {

@@ -1982,6 +1982,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 291165446600256677, guid: 047a8d8a9f546bc4d9b3ad7c57fcde7d, type: 3}
+      propertyPath: currWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 44bda6246356cc244a125adbc1447ad2, type: 2}
     - target: {fileID: 2615180440668182260, guid: 047a8d8a9f546bc4d9b3ad7c57fcde7d, type: 3}
       propertyPath: m_RootOrder
       value: 3

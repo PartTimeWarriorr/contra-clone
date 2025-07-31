@@ -123,6 +123,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public Vector2 Aim()
+    {
+        float runInput = inputManager.FindAction("Run").ReadValue<float>();
+        bool lookUp = LookUpIsPressed();
+        bool lookDown = LookDownIsPressed();
+
+        Vector2 aimDirection = Vector2.zero;
+
+        if (Mathf.Abs(runInput) > 0.01f)
+        {
+            aimDirection.x = 1;
+        }
+
+        if (lookUp)
+        {
+            aimDirection.y = 1;
+        }
+        else if (lookDown)
+        {
+            aimDirection.y = -1;
+        }
+
+        if (aimDirection == Vector2.zero)
+        {
+            return new Vector2(1, 0);
+        }
+        else
+        {
+            return aimDirection;
+        }
+
+    }
+
     public void Jump()
     {
         grounded = false;
@@ -189,6 +222,11 @@ public class PlayerController : MonoBehaviour
     public bool LookUpIsPressed()
     {
         return inputManager.FindAction("LookUp").IsPressed();
+    }
+
+    public bool LookDownIsPressed()
+    {
+        return inputManager.FindAction("LookDown").IsPressed();
     }
 
     public bool RunIsPressed()
