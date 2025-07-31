@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AutomaticBasicWeapon
   m_EditorClassIdentifier: 
   bullet: {fileID: 3990844602451028713, guid: bb830f28e4b145244ada2b5cc90efd0f, type: 3}
-  bulletVelocity: 15
+  bulletVelocity: 20
   sprite: {fileID: -570174322, guid: 6740cf93d3bac8249a9e86ee1ac919d3, type: 3}
   firingMode: 1
   fireRate: 0.1

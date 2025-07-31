@@ -1983,9 +1983,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 291165446600256677, guid: 047a8d8a9f546bc4d9b3ad7c57fcde7d, type: 3}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 291165446600256677, guid: 047a8d8a9f546bc4d9b3ad7c57fcde7d, type: 3}
       propertyPath: currWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 44bda6246356cc244a125adbc1447ad2, type: 2}
+      objectReference: {fileID: 11400000, guid: f2dd6ad40ad1ccb4d8743d69ec25c1b7, type: 2}
     - target: {fileID: 2615180440668182260, guid: 047a8d8a9f546bc4d9b3ad7c57fcde7d, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2034,9 +2038,17 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6729434893202102869, guid: 047a8d8a9f546bc4d9b3ad7c57fcde7d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7891593662499104232, guid: 047a8d8a9f546bc4d9b3ad7c57fcde7d, type: 3}
       propertyPath: m_SortingLayer
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7891593662499104232, guid: 047a8d8a9f546bc4d9b3ad7c57fcde7d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8687048431806271913, guid: 047a8d8a9f546bc4d9b3ad7c57fcde7d, type: 3}
       propertyPath: m_Name

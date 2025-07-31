@@ -21,7 +21,7 @@ public class PlayerIdleLookUpBehavior : StateMachineBehaviour
         {
             shootingOrigin = animator.transform.position;
             playerController.Shoot(shootDirection, shootingOrigin, shootOriginOffset);
-            animator.SetTrigger("Shoot");
+            animator.SetTrigger("RunShoot");
         }
 
         if (playerController.LookUpWasReleased())
