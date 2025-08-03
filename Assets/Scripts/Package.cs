@@ -14,15 +14,21 @@ public class Package : MonoBehaviour
     float frequency = 0.2f;
 
     private GameManager gameManager;
-    private List<WeaponBehavior> weapons;
+    private WeaponBehavior weapon;
     private GameObject powerUp;
+    private GameObject pickupHolder;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        weapons = gameManager.GetWeaponsList();
         powerUp = Resources.Load<GameObject>("Prefabs/PowerUp");
+        pickupHolder = GameObject.Find("Pickups");
+    }
+
+    void Start()
+    {
+        weapon = gameManager.GetWeaponsList().Find(w => w.weaponName == "Spray Weapon");
     }
 
     // Update is called once per frame
@@ -36,9 +42,10 @@ public class Package : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             GameObject newPowerUp = Instantiate(powerUp);
-            newPowerUp.GetComponent<SpriteRenderer>().sprite = weapons[0].sprite;
+            newPowerUp.GetComponent<PowerUp>().weapon = weapon;
+            newPowerUp.GetComponent<SpriteRenderer>().sprite = weapon.sprite;
             newPowerUp.transform.SetPositionAndRotation(gameObject.transform.position, Quaternion.identity);
-            newPowerUp.transform.parent = gameManager.transform;
+            newPowerUp.transform.parent = pickupHolder.transform;
             Destroy(gameObject);
         }
     }

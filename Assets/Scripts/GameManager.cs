@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<WeaponBehavior> weapons;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         weapons = Resources.LoadAll<WeaponBehavior>("ScriptableObjects/Weapons").ToList();
     }

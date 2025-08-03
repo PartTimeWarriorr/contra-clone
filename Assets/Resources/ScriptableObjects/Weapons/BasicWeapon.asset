@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e9f4e27b6e5140ba32a39b5158dc7, type: 3}
   m_Name: BasicWeapon
   m_EditorClassIdentifier: 
+  weaponName: Basic Weapon
   bullet: {fileID: 4694958068572560969, guid: c3d0f58992962b94e98f52744eb6b2ea, type: 3}
   bulletVelocity: 10
   sprite: {fileID: -107199684, guid: 6740cf93d3bac8249a9e86ee1ac919d3, type: 3}

@@ -8,6 +8,7 @@ public enum FiringMode
 
 public abstract class WeaponBehavior : ScriptableObject
 {
+    public string weaponName;
     public GameObject bullet;
     public float bulletVelocity = 6f;
     public Sprite sprite;
