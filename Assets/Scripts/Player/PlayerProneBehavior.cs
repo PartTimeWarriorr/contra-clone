@@ -24,9 +24,20 @@ public class PlayerProneBehavior : StateMachineBehaviour
             animator.SetTrigger("RunShoot");
         }
 
-        if (playerController.LookUpWasPressed())
+        if (playerController.JumpWasPressed())
+        {
+            playerController.DropThroughPlatform();
+            animator.SetBool("IsProne", false);
+        }
+
+        if (playerController.LookDownWasReleased())
         {
             animator.SetBool("IsProne", false);
+        }
+
+        if (playerController.IsSwimming())
+        {
+            animator.SetBool("IsSwimming", true);
         }
     }
 }

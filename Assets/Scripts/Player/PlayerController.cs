@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +14,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sprite;
     SpriteRenderer upperBodySprite;
+    private BoxCollider2D box;
 
     private float direction = 0f;
 
@@ -34,6 +38,7 @@ public class PlayerController : MonoBehaviour
         inputManager.Player.Run.canceled += context => direction = 0;
 
         rb = gameObject.GetComponent<Rigidbody2D>();
+        box = gameObject.GetComponent<BoxCollider2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
         upperBodySprite = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
 
@@ -156,6 +161,23 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
+    public void DropThroughPlatform()
+    {
+        StartCoroutine(Drop());
+    }
+
+    private float dropThroughDuration = 0.2f;
+
+    private IEnumerator Drop()
+    {
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Platform"), true);
+
+        yield return new WaitForSeconds(dropThroughDuration);
+
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Platform"), false);
+    }
+
     public void Jump()
     {
         grounded = false;
@@ -244,9 +266,10 @@ public class PlayerController : MonoBehaviour
         inputManager.Disable();
     }
 
-    // private void OnDrawGizmos()
-    // {
-    //     Gizmos.color = Color.red;
-    //     Gizmos.DrawSphere(transform.position + new Vector3(0,-0.9f,0), 0.3f);
-    // }
+    private void OnDrawGizmos()
+    {
+        // Gizmos.color = Color.red;
+        // Gizmos.DrawSphere(transform.position + new Vector3(0,-0.9f,0), 0.3f);
+        // Gizmos.DrawSphere(transform.position, 1.5f);
+    }
 }

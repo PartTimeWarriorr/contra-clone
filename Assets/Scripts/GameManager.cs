@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // weapons = Resources.LoadAll<ScriptableObject>("ScriptableObjects/Weapons").ToList();
+        weapons = Resources.LoadAll<WeaponBehavior>("ScriptableObjects/Weapons").ToList();
     }
 
     public List<WeaponBehavior> GetWeaponsList()

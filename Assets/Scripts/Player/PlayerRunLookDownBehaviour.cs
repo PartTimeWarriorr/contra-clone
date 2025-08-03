@@ -37,8 +37,8 @@ public class PlayerRunLookDownBehaviour : StateMachineBehaviour
 
         if (playerController.JumpWasPressed())
         {
-            playerController.Jump();
-            animator.SetBool("IsJumping", true);
+            playerController.DropThroughPlatform();
+            animator.SetBool("LookingDown", false);
         }
        
         if (playerController.LookUpWasPressed())

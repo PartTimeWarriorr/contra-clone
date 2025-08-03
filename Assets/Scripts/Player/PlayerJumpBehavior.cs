@@ -22,10 +22,9 @@ public class PlayerJumpBehavior : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         shootDirection = playerController.Aim();
-        Debug.Log(rb.velocity.y); 
         if (rb.velocity.y < 0)
         {
-            Collider2D hit = Physics2D.OverlapCircle(animator.transform.position + new Vector3(0, -0.9f, 0), 0.3f, LayerMask.GetMask("Ground"));
+            Collider2D hit = Physics2D.OverlapCircle(animator.transform.position + new Vector3(0, -0.9f, 0), 0.3f, LayerMask.GetMask("Platform"));
 
             if (hit != null && hit.CompareTag("Ground"))
             {

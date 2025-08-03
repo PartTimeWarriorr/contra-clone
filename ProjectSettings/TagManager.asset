@@ -19,7 +19,7 @@ TagManager:
   - PlayerBullet
   - Player
   - Background
-  - 
+  - Platform
   - 
   - 
   - 
@@ -54,9 +54,12 @@ TagManager:
   - name: Water
     uniqueID: 4123434081
     locked: 0
-  - name: Player
-    uniqueID: 2978275193
-    locked: 0
   - name: Pickup
     uniqueID: 2447245227
+    locked: 0
+  - name: Platform
+    uniqueID: 1768704991
+    locked: 0
+  - name: Player
+    uniqueID: 2978275193
     locked: 0
