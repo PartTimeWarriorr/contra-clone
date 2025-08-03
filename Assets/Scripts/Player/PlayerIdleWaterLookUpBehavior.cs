@@ -30,6 +30,7 @@ public class PlayerIdleWaterLookUpBehavior : StateMachineBehaviour
             shootingOrigin = animator.transform.position;
             playerController.Shoot(shootDirection, shootingOrigin, shootOriginOffset);
             animator.SetTrigger("RunShoot");
+            // TODO: Change to "Shoot" ^^
         }
 
         if (playerController.LookUpWasReleased())

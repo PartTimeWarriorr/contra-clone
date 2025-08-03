@@ -13,6 +13,8 @@ public class PlayerIdleWaterBehavior : StateMachineBehaviour
     {
         playerController = animator.GetComponent<PlayerController>();
         animator.SetBool("IsJumping", false);
+        animator.SetBool("LookingDown", false);
+        animator.SetBool("LookingUp", false);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
