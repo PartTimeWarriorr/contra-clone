@@ -61,12 +61,10 @@ public class PlayerController : MonoBehaviour
      
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.collider.gameObject.name);
         if(collision.collider.CompareTag("Water"))
         {
             rb.velocity = Vector2.zero;
             swimming = true;
-            // Debug.Log("Swimming true");
         }
     }
 
@@ -75,7 +73,6 @@ public class PlayerController : MonoBehaviour
         if(collision.collider.CompareTag("Water"))
         {
             swimming = false;
-            Debug.Log("Swimming false");
         }
     }
 
