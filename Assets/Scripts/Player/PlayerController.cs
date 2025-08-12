@@ -45,6 +45,9 @@ public class PlayerController : MonoBehaviour
         bullet = Resources.Load<GameObject>("Prefabs/Bullet");
     }
 
+    private void Update() {
+    }
+
     public bool IsGrounded()
     {
         return grounded;
@@ -58,6 +61,7 @@ public class PlayerController : MonoBehaviour
      
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(collision.collider.gameObject.name);
         if(collision.collider.CompareTag("Water"))
         {
             rb.velocity = Vector2.zero;
@@ -71,7 +75,7 @@ public class PlayerController : MonoBehaviour
         if(collision.collider.CompareTag("Water"))
         {
             swimming = false;
-            // Debug.Log("Swimming false");
+            Debug.Log("Swimming false");
         }
     }
 

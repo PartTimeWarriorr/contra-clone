@@ -9,14 +9,26 @@ public class WaterLedge : MonoBehaviour
     private Grid grid;
     private Vector2 cellSize;
 
+    private GameObject player;
+    private Animator animator;
+
     void Awake()
     {
         grid = transform.parent.parent.GetComponent<Grid>();
+        player = GameObject.Find("Player");
     }
 
     void Start()
     {
-        cellSize = grid.cellSize;
+        if (grid != null)
+        {
+            cellSize = grid.cellSize;
+        }
+
+        if (player != null)
+        {
+            animator = player.GetComponent<Animator>();
+        }
     }
 
     // TODO: fix this shit code
@@ -24,9 +36,9 @@ public class WaterLedge : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
-            Debug.Log("Player found");
-            other.gameObject.transform.SetPositionAndRotation(new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y + cellSize.y, other.gameObject.transform.position.z), Quaternion.identity);
-            other.gameObject.GetComponent<Animator>().SetBool("IsSwimming", false);
+            player.transform.SetPositionAndRotation(new Vector3(player.transform.position.x, player.transform.position.y + cellSize.y, player.transform.position.z), Quaternion.identity);
+            player.transform.position.Set(player.transform.position.x, player.transform.position.y + cellSize.y, player.transform.position.z);
+            animator.SetBool("IsSwimming", false);
             
         }
     } 
