@@ -8,7 +8,6 @@ public class PlayerJumpBehavior : StateMachineBehaviour
     private Rigidbody2D rb;
 
     private Vector3 shootingOrigin;
-    // private Vector3 shootOriginOffset = new Vector3(1.2f, 0.2f, 0);
     private Vector3 shootOriginOffset = new Vector3(0, 0, 0);
     private Vector2 shootDirection = new Vector2(1,0);  // TODO: PlayerController Aim() function: any shootDirection is valid while jumping.
 
@@ -24,7 +23,7 @@ public class PlayerJumpBehavior : StateMachineBehaviour
         shootDirection = playerController.Aim();
         if (rb.velocity.y < 0)
         {
-            Collider2D hit = Physics2D.OverlapCircle(animator.transform.position + new Vector3(0, -0.9f, 0), 0.3f, LayerMask.GetMask("Platform"));
+            Collider2D hit = Physics2D.OverlapCircle(animator.transform.position + new Vector3(0, -0.9f, 0), 0.4f, LayerMask.GetMask("Platform"));
 
             if (hit != null && hit.CompareTag("Ground"))
             {

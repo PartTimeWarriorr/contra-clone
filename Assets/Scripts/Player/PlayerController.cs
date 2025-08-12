@@ -55,11 +55,14 @@ public class PlayerController : MonoBehaviour
         return swimming;
     }
 
+     
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.CompareTag("Water"))
         {
+            rb.velocity = Vector2.zero;
             swimming = true;
+            // Debug.Log("Swimming true");
         }
     }
 
@@ -68,6 +71,7 @@ public class PlayerController : MonoBehaviour
         if(collision.collider.CompareTag("Water"))
         {
             swimming = false;
+            // Debug.Log("Swimming false");
         }
     }
 
@@ -168,10 +172,12 @@ public class PlayerController : MonoBehaviour
     }
 
     private float dropThroughDuration = 0.2f;
+    private float dropThroughForce = -2f;
 
     private IEnumerator Drop()
     {
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Platform"), true);
+        rb.AddForce(new Vector2(0, dropThroughForce));
 
         yield return new WaitForSeconds(dropThroughDuration);
 
