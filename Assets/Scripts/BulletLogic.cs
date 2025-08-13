@@ -35,10 +35,10 @@ public class BulletLogic : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Platform"))
-        {
-            Destroy(gameObject);
-        }
+        // if (collision.gameObject.layer == LayerMask.NameToLayer("Platform"))
+        // {
+        //     Destroy(gameObject);
+        // }
 
         if (collision.collider.CompareTag("Enemy"))
         {

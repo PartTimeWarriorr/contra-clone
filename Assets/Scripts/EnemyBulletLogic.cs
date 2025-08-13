@@ -7,6 +7,8 @@ public class EnemyBulletLogic : MonoBehaviour
     Vector2 bulletVelocity;
     private Vector3 playerPosition;
 
+    private float speed = 4f;
+
     private Rigidbody2D rb;
 
     private float bulletVanishThreshhold = 20f;
@@ -22,8 +24,7 @@ public class EnemyBulletLogic : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        rb.velocity = bulletVelocity;
+        rb.velocity = bulletVelocity * speed;
     }
 
     public void SetParameters(Vector2 _bulletVelocity, Vector3 _playerPosition)

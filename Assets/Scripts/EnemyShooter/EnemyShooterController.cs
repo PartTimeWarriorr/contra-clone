@@ -11,6 +11,8 @@ public class EnemyShooterController : MonoBehaviour
     private float shootCooldown = 0.75f;
     private float shootTimer = 0f;
 
+    public GameObject bullet;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,8 +42,13 @@ public class EnemyShooterController : MonoBehaviour
 
     public void Shoot()
     {
-        Debug.Log("I'm shootering now!");
+        // Debug.Log("I'm shootering now!");
         shootTimer = shootCooldown;
+
+        GameObject newBullet = Instantiate(bullet);
+        newBullet.GetComponent<EnemyBulletLogic>().SetParameters(targetPosition, player.transform.position);
+        newBullet.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+        newBullet.transform.parent = GameObject.Find("BulletHolder").transform;
     }
 
     void Die()
