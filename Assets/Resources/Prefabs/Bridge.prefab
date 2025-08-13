@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3480698206467830351}
   - component: {fileID: 4338195749865434923}
   - component: {fileID: 7142961168426691511}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Segment (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 5458142999297596609}
   - component: {fileID: 7892187862829629833}
   - component: {fileID: 5817507414405490829}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Segment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 6063066422872142616}
   - component: {fileID: 8524836917909831509}
   - component: {fileID: 5963371764143485685}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Segment (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 5394163576872205106}
   - component: {fileID: 6646286897875315323}
   - component: {fileID: 4802809517705783874}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Segment (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,9 +509,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 32234168500602474}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bridge
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

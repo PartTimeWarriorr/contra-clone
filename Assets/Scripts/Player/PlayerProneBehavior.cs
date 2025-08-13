@@ -24,7 +24,7 @@ public class PlayerProneBehavior : StateMachineBehaviour
             animator.SetTrigger("RunShoot");
         }
 
-        if (playerController.JumpWasPressed())
+        if (playerController.JumpWasPressed() && playerController.IsGrounded())
         {
             playerController.DropThroughPlatform();
             animator.SetBool("IsProne", false);

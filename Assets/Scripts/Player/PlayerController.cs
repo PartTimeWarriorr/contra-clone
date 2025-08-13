@@ -58,13 +58,18 @@ public class PlayerController : MonoBehaviour
         return swimming;
     }
 
-     
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.CompareTag("Water"))
+        if (collision.collider.CompareTag("Water"))
         {
             rb.velocity = Vector2.zero;
             swimming = true;
+        }
+
+        if (collision.collider.CompareTag("Ground"))
+        {
+            grounded = true;
         }
     }
 
@@ -73,6 +78,11 @@ public class PlayerController : MonoBehaviour
         if(collision.collider.CompareTag("Water"))
         {
             swimming = false;
+        }
+
+        if (collision.collider.CompareTag("Ground"))
+        {
+            grounded = false;
         }
     }
 
