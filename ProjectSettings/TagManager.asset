@@ -60,6 +60,12 @@ TagManager:
   - name: Platform
     uniqueID: 1768704991
     locked: 0
+  - name: Enemy
+    uniqueID: 2086368517
+    locked: 0
   - name: Player
     uniqueID: 2978275193
+    locked: 0
+  - name: Bullet
+    uniqueID: 2318028555
     locked: 0
