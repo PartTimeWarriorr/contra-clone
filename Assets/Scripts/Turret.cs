@@ -22,7 +22,7 @@ public class Turret : MonoBehaviour
         spriteRenderer.sprite = sprites[0];
     }
 
-    public float turnDelay = 0.1f; // Seconds between each 30° step
+    public float turnDelay = 0.1f; 
     private float turnTimer;
 
     private int currentDirIndex = 0;
