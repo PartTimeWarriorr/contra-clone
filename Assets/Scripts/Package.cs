@@ -49,4 +49,9 @@ public class Package : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void SetWeapon(WeaponBehavior _weapon)
+    {
+        weapon = _weapon;
+    }
 }
