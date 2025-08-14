@@ -17,6 +17,10 @@ public class EnemyRunnerRun : StateMachineBehaviour
         // {
         //     animator.SetTrigger("Hurt");
         // }
+        if (enemyRunnerController.ShouldJump())
+        {
+            enemyRunnerController.Jump();
+        }
 
         enemyRunnerController.Move();
     }
