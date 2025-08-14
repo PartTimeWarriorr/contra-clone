@@ -14,6 +14,6 @@ public class EnemyRunnerHurt : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemyRunnerController.Die(); 
+        // enemyRunnerController.Die(); 
     }
 }

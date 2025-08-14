@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
             swimming = true;
         }
 
-        if (collision.collider.CompareTag("Ground"))
+        if (collision.collider.CompareTag("Platform"))
         {
             grounded = true;
         }
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
             swimming = false;
         }
 
-        if (collision.collider.CompareTag("Ground"))
+        if (collision.collider.CompareTag("Platform"))
         {
             grounded = false;
         }

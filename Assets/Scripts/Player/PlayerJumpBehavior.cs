@@ -25,7 +25,7 @@ public class PlayerJumpBehavior : StateMachineBehaviour
         {
             Collider2D hit = Physics2D.OverlapCircle(animator.transform.position + new Vector3(0, -0.9f, 0), 0.4f, LayerMask.GetMask("Platform"));
 
-            if (hit != null && hit.CompareTag("Ground"))
+            if (hit != null && hit.CompareTag("Platform"))
             {
                 animator.SetBool("IsJumping", false);
             }

@@ -40,28 +40,28 @@ public class EnemyShooterController : MonoBehaviour
         return shootTimer <= 0;
     }
 
-    public void Shoot()
+    public void Shoot(float shootAngle)
     {
-        // Debug.Log("I'm shootering now!");
         shootTimer = shootCooldown;
 
+        Vector2 shootVelocity = new Vector2(Mathf.Cos(shootAngle * Mathf.Deg2Rad), Mathf.Sin(shootAngle * Mathf.Deg2Rad));
+
         GameObject newBullet = Instantiate(bullet);
-        newBullet.GetComponent<EnemyBulletLogic>().SetParameters(targetPosition, player.transform.position);
+        newBullet.GetComponent<EnemyBulletLogic>().SetParameters(shootVelocity, player.transform.position);
         newBullet.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
         newBullet.transform.parent = GameObject.Find("BulletHolder").transform;
     }
 
-    void Die()
-    {
-        Debug.Log("I'm dead!");
-        Destroy(gameObject);
-    }
+    // void Die()
+    // {
+    //     Destroy(gameObject);
+    // }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Bullet"))
-        {
-            Die();
-        }
-    }
+    // void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (collision.collider.CompareTag("Bullet"))
+    //     {
+    //         Die();
+    //     }
+    // }
 }

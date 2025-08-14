@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8589011748854610734}
   - component: {fileID: 3318941432086273837}
   - component: {fileID: -7022490786388618118}
+  - component: {fileID: 6792370414608292039}
   m_Layer: 0
   m_Name: EnemyRunner
   m_TagString: Enemy
@@ -134,7 +135,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!95 &3318941432086273837
 Animator:
   serializedVersion: 5
@@ -168,4 +169,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  hitByBullet: 0
+--- !u!114 &6792370414608292039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885966943977690404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fdd5714afc41ab4ba577288a17996bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  currHealth: 0

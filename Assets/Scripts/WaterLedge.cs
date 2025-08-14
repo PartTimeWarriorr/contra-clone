@@ -36,8 +36,8 @@ public class WaterLedge : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
-            player.transform.SetPositionAndRotation(new Vector3(player.transform.position.x, player.transform.position.y + cellSize.y, player.transform.position.z), Quaternion.identity);
-            player.transform.position.Set(player.transform.position.x, player.transform.position.y + cellSize.y, player.transform.position.z);
+            player.transform.SetPositionAndRotation(new Vector3(player.transform.position.x, player.transform.position.y + cellSize.y * 1.2f, player.transform.position.z), Quaternion.identity);
+            // player.transform.position.Set(player.transform.position.x, player.transform.position.y + cellSize.y, player.transform.position.z);
             animator.SetBool("IsSwimming", false);
             
         }

@@ -20,20 +20,20 @@ public class EnemyRunnerController : MonoBehaviour
         rb.velocity = new Vector2(direction * speed, rb.velocity.y);
     }
 
-    public void Die()
-    {
-        Debug.Log("I died!");
-        Destroy(gameObject);
-    }
+    // public void Die()
+    // {
+    //     Debug.Log("I died!");
+    //     Destroy(gameObject);
+    // }
 
-    public bool hitByBullet = false;
+    // public bool hitByBullet = false;
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Bullet"))
-        {
-            hitByBullet = true;
-            Destroy(collision.collider.gameObject);
-        }
-    }
+    // public void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (collision.collider.CompareTag("Bullet"))
+    //     {
+    //         hitByBullet = true;
+    //         Destroy(collision.collider.gameObject);
+    //     }
+    // }
 }

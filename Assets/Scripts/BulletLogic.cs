@@ -11,12 +11,12 @@ public class BulletLogic : MonoBehaviour
 
     // TODO: change bullet vanishing to time-based, maybe move to scriptable object?
     private float bulletVanishThreshhold = 20f;
-    
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    
+
     void Update()
     {
         if (Mathf.Abs((transform.position - playerPosition).magnitude) > bulletVanishThreshhold)
@@ -33,14 +33,9 @@ public class BulletLogic : MonoBehaviour
         playerPosition = _playerPosition;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        // if (collision.gameObject.layer == LayerMask.NameToLayer("Platform"))
-        // {
-        //     Destroy(gameObject);
-        // }
-
-        if (collision.collider.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
             Destroy(gameObject);
         }
