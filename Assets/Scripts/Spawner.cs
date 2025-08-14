@@ -3,7 +3,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     private GameObject player;
-    private float minimalPlayerDistance = 10f;
+    private float minimalPlayerDistance = 15f;
 
     private GameObject entityParent;
 
