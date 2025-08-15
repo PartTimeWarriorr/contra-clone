@@ -13,7 +13,7 @@ public class Package : MonoBehaviour
     [SerializeField]
     float frequency = 0.2f;
 
-    private GameManager gameManager;
+    // private GameManager gameManager;
     private WeaponBehavior weapon;
     private GameObject powerUp;
     private GameObject pickupHolder;
@@ -21,14 +21,14 @@ public class Package : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        // gameManager = GameManager.Instance();
         powerUp = Resources.Load<GameObject>("Prefabs/PowerUp");
         pickupHolder = GameObject.Find("Pickups");
     }
 
     void Start()
     {
-        weapon = gameManager.GetWeaponsList().Find(w => w.weaponName == "Spray Weapon");
+        // weapon = gameManager.GetWeaponsList().Find(w => w.weaponName == "Spray Weapon");
     }
 
     // Update is called once per frame

@@ -16,7 +16,6 @@ public class PackageSpawner : MonoBehaviour
         package = Resources.Load<GameObject>("Prefabs/Package");
     }
 
-    // Update is called once per frame
     void Update()
     {
         float distance = DistanceToPlayer();

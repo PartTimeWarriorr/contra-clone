@@ -26,9 +26,6 @@ public class PlayerController : MonoBehaviour
     private bool grounded = true;
     private bool swimming = false;
 
-    private GameObject bullet = null;
-
-    // TODO: Add aim function? (Return Vector2 to know where to shoot)
 
     void Awake()
     {
@@ -41,8 +38,6 @@ public class PlayerController : MonoBehaviour
         box = gameObject.GetComponent<BoxCollider2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
         upperBodySprite = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
-
-        bullet = Resources.Load<GameObject>("Prefabs/Bullet");
     }
 
     private void Update() {
@@ -176,19 +171,16 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
     public void DropThroughPlatform()
     {
         StartCoroutine(Drop());
     }
 
-    private float dropThroughDuration = 0.2f;
-    private float dropThroughForce = -2f;
+    private float dropThroughDuration = 0.3f;
 
     private IEnumerator Drop()
     {
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Platform"), true);
-        rb.AddForce(new Vector2(0, dropThroughForce));
 
         yield return new WaitForSeconds(dropThroughDuration);
 
@@ -285,6 +277,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        // Gizmos.DrawSphere(transform.position + new Vector3(0, -5, 0), 0.2f);
         // Gizmos.color = Color.red;
         // Gizmos.DrawSphere(transform.position + new Vector3(0,-0.9f,0), 0.3f);
         // Gizmos.DrawSphere(transform.position, 1.5f);

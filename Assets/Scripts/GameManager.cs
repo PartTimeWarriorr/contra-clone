@@ -2,25 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    private List<WeaponBehavior> weapons;
-    // Start is called before the first frame update
+    // private static GameManager _instance;
+
+    // public static GameManager Instance()
+    // {
+    //     return _instance;
+    // }
+
+    // void Awake()
+    // {
+    //     if (_instance != null && _instance != this)
+    //     {
+    //         Destroy(gameObject);
+    //     }
+    //     else
+    //     {
+    //         weapons = Resources.LoadAll<WeaponBehavior>("ScriptableObjects/Weapons").ToList();
+    //         _instance = this;
+    //     }
+    // }
+
+    // [SerializeField]
+    // private List<WeaponBehavior> weapons;
+
+    // public List<WeaponBehavior> GetWeaponsList()
+    // {
+    //     return weapons;
+    // }
+    Scene stageScene;
+
     void Awake()
     {
-        weapons = Resources.LoadAll<WeaponBehavior>("ScriptableObjects/Weapons").ToList();
+        stageScene = SceneManager.GetActiveScene();
     }
 
-    public List<WeaponBehavior> GetWeaponsList()
+    void OnEnable()
     {
-        return weapons;
+        PlayerHealth.OnDied += RestartStage;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnDisable()
     {
-        
+        PlayerHealth.OnDied -= RestartStage;
     }
+
+    private void RestartStage()
+    {
+        Debug.Log("Restarted");
+        SceneManager.LoadScene(stageScene.name); 
+    }
+
 }
