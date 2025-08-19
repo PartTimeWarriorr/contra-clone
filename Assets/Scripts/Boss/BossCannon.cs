@@ -9,7 +9,7 @@ public class BossCannon : MonoBehaviour
 
     private GameObject bulletHolder;
 
-    private float shootForce = 300;
+    private float shootForce = 350;
 
     public float shootCooldown = 1.5f;
     private float shootTimer = 0f;
