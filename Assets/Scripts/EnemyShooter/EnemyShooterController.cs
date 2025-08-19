@@ -42,6 +42,11 @@ public class EnemyShooterController : MonoBehaviour
 
     public void Shoot(float shootAngle)
     {
+        if (player == null)
+        {
+            return;
+        }
+
         shootTimer = shootCooldown;
 
         Vector2 shootVelocity = new Vector2(Mathf.Cos(shootAngle * Mathf.Deg2Rad), Mathf.Sin(shootAngle * Mathf.Deg2Rad));

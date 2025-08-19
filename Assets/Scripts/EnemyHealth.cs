@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -20,6 +21,15 @@ public class EnemyHealth : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             TakeDamage();
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            TakeDamage();
+            Debug.Log(currHealth);
         }
     }
 
