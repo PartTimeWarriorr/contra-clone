@@ -24,6 +24,13 @@ public class PlayerIdleLookUpBehavior : StateMachineBehaviour
             animator.SetTrigger("RunShoot");
         }
 
+        if (playerController.ShouldJump())
+        {
+            playerController.Jump();
+            animator.SetBool("LookingUp", false);
+            animator.SetBool("IsJumping", true);
+        }
+
         if (playerController.LookUpWasReleased())
         {
             animator.SetBool("LookingUp", false);

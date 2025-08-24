@@ -35,7 +35,7 @@ public class PlayerRunLookUpBehaviour : StateMachineBehaviour
             animator.SetTrigger("RunShoot");
         }
 
-        if (playerController.JumpWasPressed())
+        if (playerController.ShouldJump())
         {
             playerController.Jump();
             animator.SetBool("IsJumping", true);

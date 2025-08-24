@@ -5,13 +5,12 @@ using UnityEngine;
 public class EnemyBulletLogic : MonoBehaviour
 {
     Vector2 bulletVelocity;
-    private Vector3 playerPosition;
+    private Vector3 shooterPosition;
 
     private float speed = 4f;
+    private float bulletVanishThreshhold = 20f;
 
     private Rigidbody2D rb;
-
-    private float bulletVanishThreshhold = 20f;
     
     void Awake()
     {
@@ -20,17 +19,17 @@ public class EnemyBulletLogic : MonoBehaviour
     
     void Update()
     {
-        if (Mathf.Abs((transform.position - playerPosition).magnitude) > bulletVanishThreshhold)
+        if (Mathf.Abs((transform.position - shooterPosition).magnitude) > bulletVanishThreshhold)
         {
             Destroy(gameObject);
         }
         rb.velocity = bulletVelocity * speed;
     }
 
-    public void SetParameters(Vector2 _bulletVelocity, Vector3 _playerPosition)
+    public void SetParameters(Vector2 _bulletVelocity, Vector3 _shooterPosition)
     {
         bulletVelocity = _bulletVelocity;
-        playerPosition = _playerPosition;
+        shooterPosition = _shooterPosition;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

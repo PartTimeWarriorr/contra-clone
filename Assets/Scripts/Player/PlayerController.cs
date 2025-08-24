@@ -54,15 +54,29 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void OnCollisionEnter2D(Collision2D collision)
+    // void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (collision.collider.CompareTag("Water"))
+    //     {
+    //         rb.velocity = Vector2.zero;
+    //         swimming = true;
+    //     }
+
+    //     if (collision.collider.CompareTag("Platform"))
+    //     {
+    //         grounded = true;
+    //     }
+    // }
+
+    void OnCollisionStay2D(Collision2D other)
     {
-        if (collision.collider.CompareTag("Water"))
+        if (other.collider.CompareTag("Water"))
         {
             rb.velocity = Vector2.zero;
             swimming = true;
         }
 
-        if (collision.collider.CompareTag("Platform"))
+        if (other.collider.CompareTag("Platform"))
         {
             grounded = true;
         }
@@ -191,6 +205,11 @@ public class PlayerController : MonoBehaviour
     {
         grounded = false;
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+    }
+
+    public bool ShouldJump()
+    {
+        return grounded && JumpWasPressed();
     }
 
     public void Move()

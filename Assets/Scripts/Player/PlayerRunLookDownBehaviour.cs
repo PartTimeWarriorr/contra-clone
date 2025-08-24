@@ -35,7 +35,7 @@ public class PlayerRunLookDownBehaviour : StateMachineBehaviour
             animator.SetTrigger("RunShoot");
         }
 
-        if (playerController.JumpWasPressed() && playerController.IsGrounded())
+        if (playerController.ShouldJump())
         {
             playerController.DropThroughPlatform();
             animator.SetBool("LookingDown", false);

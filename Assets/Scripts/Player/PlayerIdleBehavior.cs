@@ -24,6 +24,12 @@ public class PlayerIdleBehavior : StateMachineBehaviour
             animator.SetTrigger("RunShoot");
         }
 
+        if (playerController.ShouldJump())
+        {
+            playerController.Jump();
+            animator.SetBool("IsJumping", true);
+        }
+
         if (playerController.LookDownWasPressed())
         {
             animator.SetBool("IsProne", true);
@@ -31,12 +37,6 @@ public class PlayerIdleBehavior : StateMachineBehaviour
         else if (playerController.LookUpWasPressed())
         {
             animator.SetBool("LookingUp", true);
-        }
-
-        if (playerController.JumpWasPressed())
-        {
-            playerController.Jump();
-            animator.SetBool("IsJumping", true);
         }
 
         if (playerController.RunWasPressed())

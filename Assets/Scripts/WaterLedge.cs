@@ -31,15 +31,25 @@ public class WaterLedge : MonoBehaviour
         }
     }
 
-    // TODO: fix this shit code
+    [SerializeField]
+    float yOffset = 1.2f;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "Player")
         {
-            player.transform.SetPositionAndRotation(new Vector3(player.transform.position.x, player.transform.position.y + cellSize.y * 1.2f, player.transform.position.z), Quaternion.identity);
-            // player.transform.position.Set(player.transform.position.x, player.transform.position.y + cellSize.y, player.transform.position.z);
+            Rigidbody2D rb = other.attachedRigidbody;
+            float ledgeTop = transform.position.y + cellSize.y / 2;
+
+            Vector2 newPosition = new Vector2(
+                rb.position.x,
+                ledgeTop + yOffset 
+            );
+
+            rb.position = newPosition;
+            rb.velocity = Vector2.zero;
+
             animator.SetBool("IsSwimming", false);
-            
         }
-    } 
+    }
 }

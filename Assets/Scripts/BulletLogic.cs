@@ -9,7 +9,6 @@ public class BulletLogic : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    // TODO: change bullet vanishing to time-based, maybe move to scriptable object?
     private float bulletVanishThreshhold = 20f;
 
     void Awake()
