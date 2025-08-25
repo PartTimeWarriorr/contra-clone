@@ -8,20 +8,30 @@ public class UIManager : MonoBehaviour
     private GameObject healthBar;
     private int healthPoints;
 
+    private GameObject levelEndPanel;
+
     void Awake()
     {
         healthBar = GameObject.Find("HealthBar");
+        levelEndPanel = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
         healthPoints = healthBar.transform.childCount;
+    }
+
+    void Start()
+    {
+        Debug.Log(levelEndPanel);
     }
 
     void OnEnable()
     {
         PlayerHealth.OnHealthChanged += DrawHealth;
+        LevelExit.OnLevelComplete += LevelEndPopUp;
     }
 
     void OnDisable()
     {
         PlayerHealth.OnHealthChanged -= DrawHealth;
+        LevelExit.OnLevelComplete -= LevelEndPopUp;
     }
 
     void DrawHealth(int health)
@@ -31,5 +41,10 @@ public class UIManager : MonoBehaviour
         {
             healthBar.transform.GetChild(i).GetComponent<Image>().enabled = false;
         }
+    }
+
+    void LevelEndPopUp()
+    {
+        levelEndPanel.SetActive(true);
     }
 }
