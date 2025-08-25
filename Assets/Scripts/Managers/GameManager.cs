@@ -30,8 +30,11 @@ public class GameManager : MonoBehaviour
     public GameObject audioManager;
     public GameObject particleManager;
 
+    public GameObject player;
+
     public static event Action<bool> OnAudioToggled;
     public static event Action<bool> OnParticlesToggled;
+    public static event Action<bool> OnGodModeToggled;
 
     void Update()
     {
@@ -42,6 +45,14 @@ public class GameManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.P))
         {
             ToggleParticles();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ExitGame();
+        }
+        else if (Input.GetKeyDown(KeyCode.G))
+        {
+            ToggleGodMode();
         }
     }
 
@@ -57,9 +68,21 @@ public class GameManager : MonoBehaviour
         OnParticlesToggled?.Invoke(particleManager.activeSelf);
     }
 
+    void ToggleGodMode()
+    {
+        if (player != null)
+        {
+            // toggle from 1 to 0 and from 0 to 1
+            int enemyDamage = player.GetComponent<PlayerHealth>().enemyDamage;
+            player.GetComponent<PlayerHealth>().enemyDamage = Mathf.Abs(enemyDamage - 1);
+            OnGodModeToggled?.Invoke(enemyDamage == 0);
+        }
+    }
+
     void Awake()
     {
         currScene = SceneManager.GetActiveScene();
+        player = GameObject.Find("Player");
     }
 
     void Start()

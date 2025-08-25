@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     private GameObject levelEndPanel;
     private GameObject audioIcon;
     private GameObject particlesIcon;
+    private GameObject godModeIcon;
 
     void Awake()
     {
@@ -20,6 +21,7 @@ public class UIManager : MonoBehaviour
         levelEndPanel = canvas.transform.Find("LevelEndPanel").gameObject;
         audioIcon = canvas.transform.Find("AudioIcon").gameObject;
         particlesIcon = canvas.transform.Find("ParticlesIcon").gameObject;
+        godModeIcon = canvas.transform.Find("GodModeIcon").gameObject;
         healthPoints = healthBar.transform.childCount;
     }
 
@@ -34,6 +36,7 @@ public class UIManager : MonoBehaviour
         LevelExit.OnLevelComplete += LevelEndPopUp;
         GameManager.OnAudioToggled += ToggleAudioIcon;
         GameManager.OnParticlesToggled += ToggleParticlesIcon;
+        GameManager.OnGodModeToggled += ToggleGodModeIcon;
     }
 
     void OnDisable()
@@ -42,6 +45,7 @@ public class UIManager : MonoBehaviour
         LevelExit.OnLevelComplete -= LevelEndPopUp;
         GameManager.OnAudioToggled -= ToggleAudioIcon;
         GameManager.OnParticlesToggled -= ToggleParticlesIcon;
+        GameManager.OnGodModeToggled -= ToggleGodModeIcon;
     }
 
     void DrawHealth(int health)
@@ -66,5 +70,10 @@ public class UIManager : MonoBehaviour
     void ToggleParticlesIcon(bool status)
     {
         particlesIcon.SetActive(!status);
+    }
+
+    void ToggleGodModeIcon(bool status)
+    {
+        godModeIcon.SetActive(!status);
     }
 }

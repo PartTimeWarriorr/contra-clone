@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public int currHealth = 0;
 
     // Enemies always deal 1 damage
-    private int enemyDamage = 1;
+    public int enemyDamage = 1;
 
     private float iFrames = 3f;
 
