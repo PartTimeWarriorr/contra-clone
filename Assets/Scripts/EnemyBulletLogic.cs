@@ -38,5 +38,10 @@ public class EnemyBulletLogic : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Boundary"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

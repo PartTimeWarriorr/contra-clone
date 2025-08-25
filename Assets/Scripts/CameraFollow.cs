@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -9,23 +10,35 @@ public class CameraFollow : MonoBehaviour
     const float xOffset = 8f;
     const float zIndex = -10;
     const float yIndex = -2f;
-    // TODO
-    // lower limit should be a world boundary - not camera restriction
-    // float xLowerLimit = 0f;
+
+    public GameObject bossFight;
+    float bossFightX;
+    const float bossFightOffset = 10f;
+
+    float maxX = 0f;
 
     void Start()
     {
+        if (bossFight != null)
+        {
+            bossFightX = bossFight.transform.position.x;
+        }
+
         if (player != null)
         {
-            playerTransform = player.transform; 
+            playerTransform = player.transform;
         }
+
+        maxX = player.transform.position.x + xOffset;
     }
 
     void Update()
     {
         if (player != null)
         {
-            transform.position = new Vector3(playerTransform.position.x + xOffset, yIndex, zIndex);
+            maxX = Mathf.Max(maxX, playerTransform.transform.position.x + xOffset);
+            maxX = Mathf.Min(maxX, bossFightX - bossFightOffset);
+            transform.position = new Vector3(maxX, yIndex, zIndex);
         }
     }
 }

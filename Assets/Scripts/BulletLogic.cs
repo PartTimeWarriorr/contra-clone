@@ -32,9 +32,14 @@ public class BulletLogic : MonoBehaviour
         playerPosition = _playerPosition;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.CompareTag("Enemy"))
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Boundary"))
         {
             Destroy(gameObject);
         }

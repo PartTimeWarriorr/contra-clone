@@ -26,20 +26,15 @@ public class Package : MonoBehaviour
         pickupHolder = GameObject.Find("Pickups");
     }
 
-    void Start()
-    {
-        // weapon = gameManager.GetWeaponsList().Find(w => w.weaponName == "Spray Weapon");
-    }
-
     // Update is called once per frame
     void Update()
     {
         transform.position = new Vector2(transform.position.x + movementSpeed, magnitude * (float)Math.Sin(Time.time * frequency));
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.CompareTag("Bullet"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerBullet"))
         {
             GameObject newPowerUp = Instantiate(powerUp);
             newPowerUp.GetComponent<PowerUp>().weapon = weapon;

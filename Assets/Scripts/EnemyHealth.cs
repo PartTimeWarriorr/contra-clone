@@ -16,11 +16,16 @@ public class EnemyHealth : MonoBehaviour
         currHealth = maxHealth;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.CompareTag("Bullet"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerBullet"))
         {
             TakeDamage();
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Boundary"))
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -47,5 +52,4 @@ public class EnemyHealth : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
 }

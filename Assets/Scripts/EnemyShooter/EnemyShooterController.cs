@@ -52,21 +52,8 @@ public class EnemyShooterController : MonoBehaviour
         Vector2 shootVelocity = new Vector2(Mathf.Cos(shootAngle * Mathf.Deg2Rad), Mathf.Sin(shootAngle * Mathf.Deg2Rad));
 
         GameObject newBullet = Instantiate(bullet);
-        newBullet.GetComponent<EnemyBulletLogic>().SetParameters(shootVelocity, player.transform.position);
+        newBullet.GetComponent<EnemyBulletLogic>().SetParameters(shootVelocity, transform.position);
         newBullet.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
         newBullet.transform.parent = GameObject.Find("BulletHolder").transform;
     }
-
-    // void Die()
-    // {
-    //     Destroy(gameObject);
-    // }
-
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     if (collision.collider.CompareTag("Bullet"))
-    //     {
-    //         Die();
-    //     }
-    // }
 }

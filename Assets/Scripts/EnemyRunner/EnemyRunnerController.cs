@@ -55,20 +55,4 @@ public class EnemyRunnerController : MonoBehaviour
         }
     }
 
-    // public void Die()
-    // {
-    //     Debug.Log("I died!");
-    //     Destroy(gameObject);
-    // }
-
-    // public bool hitByBullet = false;
-
-    // public void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     if (collision.collider.CompareTag("Bullet"))
-    //     {
-    //         hitByBullet = true;
-    //         Destroy(collision.collider.gameObject);
-    //     }
-    // }
 }

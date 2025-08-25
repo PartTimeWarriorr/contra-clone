@@ -31,21 +31,26 @@ public class PlayerHealth : MonoBehaviour
         currHealth = maxHealth;
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.collider.CompareTag("Enemy"))
+        // if (other.collider.CompareTag("Enemy"))
+        // {
+        //     TakeDamage();
+        // }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyTouch") ||
+            collision.gameObject.layer == LayerMask.NameToLayer("EnemyBullet"))
         {
             TakeDamage();
         }
 
-        if (other.collider.CompareTag("Pit"))
+        if (collision.collider.CompareTag("Pit"))
         {
             TakeFallDamage();
             RecoverFromFall(transform.position);
         }
     }
 
-    private float recoverOffsetX = 5f;
+    private float recoverOffsetX = 0f;
     private float recoverOffsetY = 15f;
 
     void RecoverFromFall(Vector3 pos)
@@ -96,9 +101,9 @@ public class PlayerHealth : MonoBehaviour
     {
         spriteRenderer.color = Color.red;
         invincible = true;
-        // Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer(""), true);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("EnemyTouch"), true);
         yield return new WaitForSeconds(iFrames);
-        // Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer(""), false);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("EnemyTouch"), false);
         invincible = false;
         spriteRenderer.color = Color.white;
     }

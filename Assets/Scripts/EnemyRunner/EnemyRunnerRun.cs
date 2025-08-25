@@ -13,10 +13,6 @@ public class EnemyRunnerRun : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // if (enemyRunnerController.hitByBullet)
-        // {
-        //     animator.SetTrigger("Hurt");
-        // }
         if (enemyRunnerController.ShouldJump())
         {
             enemyRunnerController.Jump();
