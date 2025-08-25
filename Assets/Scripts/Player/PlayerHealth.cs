@@ -96,7 +96,9 @@ public class PlayerHealth : MonoBehaviour
     {
         spriteRenderer.color = Color.red;
         invincible = true;
+        // Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer(""), true);
         yield return new WaitForSeconds(iFrames);
+        // Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer(""), false);
         invincible = false;
         spriteRenderer.color = Color.white;
     }

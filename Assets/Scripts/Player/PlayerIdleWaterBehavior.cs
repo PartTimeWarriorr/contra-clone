@@ -41,18 +41,6 @@ public class PlayerIdleWaterBehavior : StateMachineBehaviour
             animator.SetBool("IsWalking", true);
         }
 
-        if (playerController.JumpWasPressed())
-        {
-            playerController.Jump();
-            animator.SetBool("IsSwimming", false);
-            animator.SetBool("IsJumping", true);
-        }
-
-        // if (!playerController.IsSwimming())
-        // {
-        //     animator.SetBool("IsSwimming", false);
-        // }
-
         playerController.Move();
         if (playerController.GetDirection() != 0)
         {

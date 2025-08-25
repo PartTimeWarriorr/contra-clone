@@ -18,13 +18,6 @@ public class PlayerIdleWaterLookUpBehavior : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (playerController.JumpWasPressed())
-        {
-            playerController.Jump();
-            animator.SetBool("IsSwimming", false);
-            animator.SetBool("IsJumping", true);
-        }
-
         if (playerController.ShouldShoot())
         {
             shootingOrigin = animator.transform.position;
