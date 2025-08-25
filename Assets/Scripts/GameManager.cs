@@ -25,14 +25,6 @@ public class GameManager : MonoBehaviour
     //         _instance = this;
     //     }
     // }
-
-    // [SerializeField]
-    // private List<WeaponBehavior> weapons;
-
-    // public List<WeaponBehavior> GetWeaponsList()
-    // {
-    //     return weapons;
-    // }
     Scene stageScene;
 
     void Awake()
@@ -53,7 +45,16 @@ public class GameManager : MonoBehaviour
     private void RestartStage()
     {
         Debug.Log("Restarted");
-        SceneManager.LoadScene(stageScene.name); 
+        SceneManager.LoadScene("Scenes/Stage1");
     }
 
+    public void LoadStage()
+    {
+        SceneManager.LoadScene("Scenes/Stage1");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
