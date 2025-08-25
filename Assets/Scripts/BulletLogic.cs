@@ -34,12 +34,13 @@ public class BulletLogic : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Enemy"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Boundary") ||
+            collision.gameObject.layer == LayerMask.NameToLayer("EnemyTouch") ||
+            collision.gameObject.layer == LayerMask.NameToLayer("EnemyNonTouch"))
         {
             Destroy(gameObject);
         }
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Boundary"))
+        else if (collision.collider.CompareTag("Package"))
         {
             Destroy(gameObject);
         }

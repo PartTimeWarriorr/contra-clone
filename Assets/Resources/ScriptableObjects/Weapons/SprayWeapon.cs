@@ -27,9 +27,9 @@ public class SprayWeapon : WeaponBehavior
             shootVelocity = rotatedDirection * bulletVelocity;
 
             SpawnBullet(bullet, shootVelocity, startingPosition);
-
         }
 
+        AudioManager.PlayShoot(weaponName);
     }
 
     Vector2 RotateVectorRad(Vector2 v, float radians)

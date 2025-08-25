@@ -25,11 +25,23 @@ public class GameManager : MonoBehaviour
     //         _instance = this;
     //     }
     // }
-    Scene stageScene;
+    Scene currScene;
 
     void Awake()
     {
-        stageScene = SceneManager.GetActiveScene();
+        currScene = SceneManager.GetActiveScene();
+    }
+
+    void Start()
+    {
+        if (currScene.name == "Stage1")
+        {
+            AudioManager.PlayStageTheme(true);
+        }
+        else if (currScene.name == "MainMenu")
+        {
+            AudioManager.PlayTitleTheme();
+        }
     }
 
     void OnEnable()

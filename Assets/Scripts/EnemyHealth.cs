@@ -42,6 +42,11 @@ public class EnemyHealth : MonoBehaviour
     {
         currHealth -= bulletDamage;
 
+        if (gameObject.CompareTag("Machine"))
+        {
+            AudioManager.PlayMachineDamage();
+        }
+
         if (currHealth <= 0f)
         {
             Die();

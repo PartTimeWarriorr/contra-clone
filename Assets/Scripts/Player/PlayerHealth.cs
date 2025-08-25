@@ -65,6 +65,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currHealth -= enemyDamage;
         OnHealthChanged?.Invoke(currHealth);
+        AudioManager.PlayPlayerDamage();
 
         if (currHealth <= 0)
         {
@@ -83,6 +84,7 @@ public class PlayerHealth : MonoBehaviour
 
         currHealth -= enemyDamage;
         OnHealthChanged?.Invoke(currHealth);
+        AudioManager.PlayPlayerDamage();
 
         if (currHealth <= 0)
         {

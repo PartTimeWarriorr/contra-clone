@@ -13,5 +13,6 @@ public class BasicWeapon : WeaponBehavior
         Vector3 startingPosition = new Vector3(playerPosition.x + facingDirection * offset.x, playerPosition.y + offset.y, playerPosition.z);
 
         SpawnBullet(bullet, shootVelocity, startingPosition);
+        AudioManager.PlayShoot(weaponName);
     }
 }

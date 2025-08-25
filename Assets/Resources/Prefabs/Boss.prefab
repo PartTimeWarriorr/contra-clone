@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 4005034532405884175}
   m_Layer: 11
   m_Name: CannonRight
-  m_TagString: Enemy
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -465,9 +465,9 @@ GameObject:
   - component: {fileID: 7852896286439736535}
   - component: {fileID: 5754152323124320673}
   - component: {fileID: 2820251499955465411}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BossHeart
-  m_TagString: Enemy
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: 6928682987972574507}
   m_Layer: 11
   m_Name: CannonLeft
-  m_TagString: Enemy
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
