@@ -7,7 +7,7 @@ using UnityEngine;
 public class Package : MonoBehaviour
 {
     [SerializeField]
-    float movementSpeed = 0.01f;
+    float movementSpeed = 0.1f;
     [SerializeField]
     float magnitude = 0.2f;
     [SerializeField]
