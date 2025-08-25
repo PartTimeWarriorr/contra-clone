@@ -9,10 +9,6 @@ public class MovingBoundary : MonoBehaviour
 
     void Start()
     {
-        // if (mainCam != null)
-        // {
-        //     distance = mainCam.transform.position.x - transform.position.x; 
-        // }
         float worldHeight = 2f * mainCam.orthographicSize;
         float worldWidth = worldHeight * mainCam.aspect;
         distance = worldWidth / 2;

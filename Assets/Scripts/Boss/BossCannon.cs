@@ -16,7 +16,7 @@ public class BossCannon : MonoBehaviour
 
     void Awake()
     {
-        bulletHolder = GameObject.Find("Bullets");
+        bulletHolder = GameObject.Find("BulletHolder");
     }
 
     void Update()
@@ -42,6 +42,7 @@ public class BossCannon : MonoBehaviour
         newCannonBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(horizontalForce * shootForce, 0));
         newCannonBall.GetComponent<CannonBall>().cannonPosition = gameObject.transform.position;
         newCannonBall.transform.position = transform.position;
+        newCannonBall.transform.parent = bulletHolder.transform;
 
         if (bulletHolder)
         {
