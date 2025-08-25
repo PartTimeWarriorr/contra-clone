@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class EnemyHealth : MonoBehaviour
 
     // All player bullets deal 1 damage..
     private float bulletDamage = 1f;
+
+    public static event Action<Vector3> OnEnemyDeath;
 
     void Start()
     {
@@ -56,5 +59,7 @@ public class EnemyHealth : MonoBehaviour
     void Die()
     {
         Destroy(gameObject);
+        OnEnemyDeath?.Invoke(gameObject.transform.position);
+        AudioManager.PlayEnemyDeath();
     }
 }

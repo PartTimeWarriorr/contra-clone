@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,35 @@ public class GameManager : MonoBehaviour
     //     }
     // }
     Scene currScene;
+    public GameObject audioManager;
+    public GameObject particleManager;
+
+    public static event Action<bool> OnAudioToggled;
+    public static event Action<bool> OnParticlesToggled;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ToggleAudio();
+        }
+        else if (Input.GetKeyDown(KeyCode.P))
+        {
+            ToggleParticles();
+        }
+    }
+
+    void ToggleAudio()
+    {
+        audioManager.SetActive(!audioManager.activeSelf);
+        OnAudioToggled?.Invoke(audioManager.activeSelf);
+    }
+
+    void ToggleParticles()
+    {
+        particleManager.SetActive(!particleManager.activeSelf);
+        OnParticlesToggled?.Invoke(particleManager.activeSelf);
+    }
 
     void Awake()
     {
@@ -34,14 +64,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        if (currScene.name == "Stage1")
-        {
-            AudioManager.PlayStageTheme(true);
-        }
-        else if (currScene.name == "MainMenu")
-        {
-            AudioManager.PlayTitleTheme();
-        }
     }
 
     void OnEnable()

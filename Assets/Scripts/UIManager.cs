@@ -8,12 +8,18 @@ public class UIManager : MonoBehaviour
     private GameObject healthBar;
     private int healthPoints;
 
+    public GameObject canvas;
+
     private GameObject levelEndPanel;
+    private GameObject audioIcon;
+    private GameObject particlesIcon;
 
     void Awake()
     {
-        healthBar = GameObject.Find("HealthBar");
-        levelEndPanel = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
+        healthBar = canvas.transform.Find("HealthBar").gameObject;
+        levelEndPanel = canvas.transform.Find("LevelEndPanel").gameObject;
+        audioIcon = canvas.transform.Find("AudioIcon").gameObject;
+        particlesIcon = canvas.transform.Find("ParticlesIcon").gameObject;
         healthPoints = healthBar.transform.childCount;
     }
 
@@ -26,12 +32,16 @@ public class UIManager : MonoBehaviour
     {
         PlayerHealth.OnHealthChanged += DrawHealth;
         LevelExit.OnLevelComplete += LevelEndPopUp;
+        GameManager.OnAudioToggled += ToggleAudioIcon;
+        GameManager.OnParticlesToggled += ToggleParticlesIcon;
     }
 
     void OnDisable()
     {
         PlayerHealth.OnHealthChanged -= DrawHealth;
         LevelExit.OnLevelComplete -= LevelEndPopUp;
+        GameManager.OnAudioToggled -= ToggleAudioIcon;
+        GameManager.OnParticlesToggled -= ToggleParticlesIcon;
     }
 
     void DrawHealth(int health)
@@ -46,5 +56,15 @@ public class UIManager : MonoBehaviour
     void LevelEndPopUp()
     {
         levelEndPanel.SetActive(true);
+    }
+
+    void ToggleAudioIcon(bool status)
+    {
+        audioIcon.SetActive(!status);
+    }
+
+    void ToggleParticlesIcon(bool status)
+    {
+        particlesIcon.SetActive(!status);
     }
 }

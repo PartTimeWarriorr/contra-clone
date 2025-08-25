@@ -337,8 +337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea90eb88466a6064cb5f5a4aa32f0d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpForce: 18
+  speed: 6
+  jumpForce: 14
   currWeapon: {fileID: 11400000, guid: 1ad657f5f4bc4d74981ffad37d2f04ed, type: 2}
 --- !u!114 &2668526988753705233
 MonoBehaviour:
@@ -352,3 +352,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac6d126d6b125f4682430cf91fa1791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 3
+  currHealth: 0
