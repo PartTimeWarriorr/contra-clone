@@ -13,6 +13,8 @@ public class Package : MonoBehaviour
     [SerializeField]
     float frequency = 0.2f;
 
+    const float yOffset = 2f;
+
     // private GameManager gameManager;
     private WeaponBehavior weapon;
     private GameObject powerUp;
@@ -32,14 +34,14 @@ public class Package : MonoBehaviour
         transform.position = new Vector2(transform.position.x + movementSpeed, magnitude * (float)Math.Sin(Time.time * frequency));
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerBullet"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("PlayerBullet"))
         {
             GameObject newPowerUp = Instantiate(powerUp);
             newPowerUp.GetComponent<PowerUp>().weapon = weapon;
             newPowerUp.GetComponent<SpriteRenderer>().sprite = weapon.sprite;
-            newPowerUp.transform.SetPositionAndRotation(gameObject.transform.position, Quaternion.identity);
+            newPowerUp.transform.SetPositionAndRotation(gameObject.transform.position + new Vector3(0, yOffset, 0), Quaternion.identity);
             newPowerUp.transform.parent = pickupHolder.transform;
             Destroy(gameObject);
         }

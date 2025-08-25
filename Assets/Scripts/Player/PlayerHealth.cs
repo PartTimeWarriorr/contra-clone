@@ -2,6 +2,8 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using Unity.VisualScripting;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -13,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
 
     private float iFrames = 3f;
 
-    private SpriteRenderer spriteRenderer;
+    private List<SpriteRenderer> renderers;
     private BoxCollider2D box;
     private bool invincible = false;
 
@@ -22,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        renderers = GetComponentsInChildren<SpriteRenderer>().ToList();
         box = GetComponent<BoxCollider2D>();
     }
 
@@ -99,12 +101,20 @@ public class PlayerHealth : MonoBehaviour
 
     IEnumerator InvincibilityFrames()
     {
-        spriteRenderer.color = Color.red;
+        ChangeColors(Color.red);
         invincible = true;
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("EnemyTouch"), true);
         yield return new WaitForSeconds(iFrames);
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("EnemyTouch"), false);
         invincible = false;
-        spriteRenderer.color = Color.white;
+        ChangeColors(Color.white);
+    }
+
+    void ChangeColors(Color color)
+    {
+        foreach (var r in renderers)
+        {
+            r.color = color;
+        }
     }
 }

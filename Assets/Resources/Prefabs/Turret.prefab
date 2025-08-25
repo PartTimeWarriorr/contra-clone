@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1712852813863936627}
   - component: {fileID: 3985278193971964753}
-  - component: {fileID: 3632071707276003465}
   - component: {fileID: 857435046952573873}
   - component: {fileID: 2654731987085658417}
+  - component: {fileID: 3632071707276003465}
   - component: {fileID: 547588101832840910}
   m_Layer: 11
   m_Name: Turret
@@ -88,34 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3632071707276003465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3285132901046478744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c843c784a000b340b8704626f90f542, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: -1992479981, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
-  - {fileID: -1326986913, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
-  - {fileID: 1942011480, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
-  - {fileID: 1504991220, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
-  - {fileID: -810187013, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
-  - {fileID: -1400503215, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
-  - {fileID: -152411442, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
-  - {fileID: -1765190085, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
-  - {fileID: 1981197789, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
-  - {fileID: -1675902923, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
-  - {fileID: 1062305980, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
-  - {fileID: -620026236, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
-  bullet: {fileID: 3788043731370623129, guid: ff307826ce73c5f419d851014056f485, type: 3}
-  turnDelay: 0.1
-  shootCooldown: 2
 --- !u!61 &857435046952573873
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -163,6 +135,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &3632071707276003465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3285132901046478744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c843c784a000b340b8704626f90f542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -1992479981, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
+  - {fileID: -1326986913, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
+  - {fileID: 1942011480, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
+  - {fileID: 1504991220, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
+  - {fileID: -810187013, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
+  - {fileID: -1400503215, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
+  - {fileID: -152411442, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
+  - {fileID: -1765190085, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
+  - {fileID: 1981197789, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
+  - {fileID: -1675902923, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
+  - {fileID: 1062305980, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
+  - {fileID: -620026236, guid: d2a7312da5e86274dbdd54778a75b3fd, type: 3}
+  bullet: {fileID: 3788043731370623129, guid: ff307826ce73c5f419d851014056f485, type: 3}
+  turnDelay: 0.1
+  shootCooldown: 2
 --- !u!114 &547588101832840910
 MonoBehaviour:
   m_ObjectHideFlags: 0

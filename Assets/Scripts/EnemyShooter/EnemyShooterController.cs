@@ -8,7 +8,7 @@ public class EnemyShooterController : MonoBehaviour
     private GameObject player;
 
     [SerializeField]
-    private float shootCooldown = 0.75f;
+    private float shootCooldown = 1.5f;
     private float shootTimer = 0f;
 
     public GameObject bullet;
