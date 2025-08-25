@@ -14,6 +14,8 @@ public class LevelExit : MonoBehaviour
             OnLevelComplete?.Invoke();
             other.gameObject.GetComponent<PlayerController>().enabled = false;
             other.gameObject.GetComponent<PlayerHealth>().enabled = false;
+            AudioManager.PlayStageTheme(false);
+            AudioManager.PlayStageClear();
         }
     }
 }

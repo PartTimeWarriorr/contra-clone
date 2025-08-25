@@ -12,6 +12,11 @@ public class BossHeart : MonoBehaviour
     public GameObject boundary;
     public SpriteRenderer bossLowerSpriteRenderer;
 
+    void Start()
+    {
+        AudioManager.PlayBossSpawn(); 
+    }
+
     void OnDestroy()
     {
         OnBossHeartDestroyed?.Invoke();

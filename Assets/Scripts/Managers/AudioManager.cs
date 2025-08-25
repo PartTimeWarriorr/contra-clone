@@ -21,6 +21,10 @@ public class AudioManager : MonoBehaviour
     private AudioSource sprayShoot = null;
     [SerializeField]
     private AudioSource enemyDeath = null;
+    [SerializeField]
+    private AudioSource bossSpawn = null;
+    [SerializeField]
+    private AudioSource stageClear = null;
 
     private static AudioManager instance;
 
@@ -54,7 +58,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void PlayStageTheme(bool playing)
+    public static void PlayStageTheme(bool playing)
     {
         if (playing)
         {
@@ -84,6 +88,16 @@ public class AudioManager : MonoBehaviour
     public static void PlayEnemyDeath()
     {
         instance.enemyDeath.Play();
+    }
+
+    public static void PlayBossSpawn()
+    {
+        instance.bossSpawn.Play();
+    }
+
+    public static void PlayStageClear()
+    {
+        instance.stageClear.Play();
     }
 
     public static void PlayShoot(string weapon)
