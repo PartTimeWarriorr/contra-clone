@@ -31,7 +31,7 @@ public class Package : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector2(transform.position.x + movementSpeed, magnitude * (float)Math.Sin(Time.time * frequency));
+        transform.position = new Vector2(transform.position.x + movementSpeed * Time.deltaTime, magnitude * (float)Math.Sin(Time.time * frequency));
     }
 
     void OnTriggerEnter2D(Collider2D other)
