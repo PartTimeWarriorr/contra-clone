@@ -11,7 +11,7 @@ public class PlayerRunLookUpBehaviour : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("I'm now RunLookUp.");
+        // Debug.Log("I'm now RunLookUp.");
         playerController = animator.GetComponent<PlayerController>();
     }
 

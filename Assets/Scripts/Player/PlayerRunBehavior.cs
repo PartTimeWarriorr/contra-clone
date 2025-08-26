@@ -11,7 +11,7 @@ public class PlayerRunBehavior : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("I'm now Run.");
+        // Debug.Log("I'm now Run.");
         playerController = animator.GetComponent<PlayerController>();
     }
 

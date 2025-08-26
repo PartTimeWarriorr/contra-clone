@@ -11,7 +11,7 @@ public class PlayerProneBehavior : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("I am now Prone.");
+        // Debug.Log("I am now Prone.");
         playerController = animator.GetComponent<PlayerController>();
     }
 

@@ -11,7 +11,7 @@ public class PlayerIdleBehavior : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("I'm now Idle.");
+        // Debug.Log("I'm now Idle.");
         playerController = animator.GetComponent<PlayerController>();
     }
 

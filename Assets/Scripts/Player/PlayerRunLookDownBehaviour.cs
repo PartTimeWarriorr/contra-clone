@@ -11,7 +11,7 @@ public class PlayerRunLookDownBehaviour : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("I'm now RunLookDown.");
+        // Debug.Log("I'm now RunLookDown.");
         playerController = animator.GetComponent<PlayerController>();
     }
 
