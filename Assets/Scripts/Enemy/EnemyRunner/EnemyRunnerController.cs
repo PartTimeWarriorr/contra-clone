@@ -55,4 +55,12 @@ public class EnemyRunnerController : MonoBehaviour
         }
     }
 
+    // void OnDrawGizmos()
+    // {
+    //     Debug.DrawLine(
+    //         new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), 
+    //         new Vector3(transform.position.x, transform.position.y - 3f, transform.position.z),
+    //         Color.red
+    //                 );    
+    // }
 }

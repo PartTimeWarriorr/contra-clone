@@ -37,7 +37,8 @@ public class EnemyShooterController : MonoBehaviour
 
     public bool CanShoot()
     {
-        return shootTimer <= 0;
+        // Shoot when cooldown is over and target is to the left
+        return shootTimer <= 0 && targetPosition.x <= transform.position.x;
     }
 
     public void Shoot(float shootAngle)
